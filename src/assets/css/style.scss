@@ -1,0 +1,276 @@
+/* ---- Colors ---- */
+$default-blue: #4044C9;
+$default-secondaryBlue: #347BE7;
+$default-red: #E75050;
+$default-green: #42B04D;
+$default-gray: #D9D9D9;
+$default-white: #ffffff;
+$default-lightGray: #F2F2F2;
+$border-color: #ccc;
+$default-dark: #1F1A3D;
+/* ---- Set Typography ---- */
+$baseFontSize: 16px;
+$baseLineHeight: 24px;
+$baseFontWeight: 500;
+$baseFontFamily: Avenir, Helvetica, Arial, sans-serif;
+/* ---- Set Box Sizing: Border Box ---- */
+* {
+  box-sizing: border-box;
+  font-family: $baseFontFamily;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* ---- Typography ---- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+ul {
+  margin: 0 0 20px;
+}
+
+body {
+  padding: 0;
+  color: $default-dark;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  font-weight: $baseFontWeight;
+  font-family: $baseFontFamily;
+  background-color: $default-lightGray;
+}
+/* ---- Helper Classes ---- */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-center-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+/* ---- Form Element & Components ---- */
+label {
+  font-weight: $baseFontWeight;
+  display: block;
+  margin-bottom: 4px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 20px;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  font-weight: $baseFontWeight;
+  background-color: $default-white;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+}
+
+.btn-group {
+  .btn {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.alert {
+  padding: 5px 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+
+  &.alert-danger {
+    color: $default-red;
+    background-color: lighten($default-red, 30%);
+    border: 1px solid $default-red;
+  }
+}
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  font-weight: $baseFontWeight;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+
+  &.btn-primary:not([disabled]) {
+    background-color: $default-blue;
+    color: $default-white;
+
+    &:hover {
+      background-color: darken($default-blue, 20%);
+    }
+  }
+
+  &.btn-danger:not([disabled]) {
+    background-color: $default-red;
+    color: $default-white;
+
+    &:hover {
+      background-color: darken($default-red, 20%);
+    }
+  }
+
+  &.btn-primary-inverse {
+    background-color: $default-white;
+    border: 1px solid $default-blue;
+    color: $default-blue;
+
+    &:hover {
+      background-color: darken($default-white, 20%);
+    }
+  }
+
+  &.btn-sm {
+    font-size: $baseFontSize - 2px;
+    padding: 3px 10px;
+  }
+}
+/* ---- Custom Checkbox ---- */
+.custom-checkbox {
+  position: relative;
+
+  input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:checked + .custom-checkbox-area::before {
+    transform: rotate(-45deg) scale(1);
+  }
+
+  .custom-checkbox-area {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $default-blue;
+    display: block;
+    border-radius: 4px;
+    background-color: $default-white;
+
+    &::before {
+      transition: all 0.2s;
+      transform: rotate(-45deg) scale(0);
+      top: 5px;
+      left: 4px;
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 3px;
+      border-left: 2px solid $default-blue;
+      border-bottom: 2px solid $default-blue;
+    }
+  }
+}
+/* ---- Todo App ---- */
+.todo-app-container {
+  max-width: 600px;
+  margin: 60px auto 0;
+  background-color: $default-white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+
+  .todo-header {
+    background-color: $default-blue;
+    padding: 20px;
+
+    .heading {
+      h1 {
+        color: $default-white;
+        margin-bottom: 10px;
+      }
+
+      .todo-count {
+        margin-bottom: 0;
+        color: darken($default-white, 10%);
+      }
+    }
+  }
+
+  .todo-form {
+    background-color: #e7e8ff;
+    padding: 20px;
+  }
+
+  .todo-body {
+    padding: 20px;
+
+    .remove-all-btn {
+      border-top: 1px solid $default-gray;
+      margin-top: 10px;
+      padding-top: 10px;
+      text-align: center;
+    }
+  }
+
+  .todo-list {
+    .todo-item {
+      padding: 15px;
+      background-color: $default-lightGray;
+      border-radius: 4px;
+      margin-bottom: 3px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .todo-item-heading {
+        display: flex;
+        align-items: center;
+      }
+
+      .custom-checkbox {
+        margin-right: 15px;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: $baseFontSize;
+        font-weight: $baseFontWeight;
+      }
+    }
+  }
+
+  .smiley-icon {
+    font-size: 40px;
+  }
+}
