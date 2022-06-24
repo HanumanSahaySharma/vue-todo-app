@@ -4,13 +4,16 @@
             <h1>Todos</h1>
             <p class="todo-count">{{ todoCount }}</p>
         </div>
-        <button class="btn btn-primary-inverse" @click="$emit('toggleTodoForm')">
-          {{ !toggleForm ? 'Add Todo' : 'Hide Form'}}
-        </button>
+        <appButton :title="!toggleForm ? 'Add Todo' : 'Hide Form'" varient="primary-inverse" v-on:onClick="$emit('toggleTodoForm')"></appButton>
     </div>
 </template>
 <script>
+import appButton from '@/components/Button/index'
 export default {
-  props: ['todoCount', 'toggleForm']
+  name: 'todo-header',
+  props: ['todoCount', 'toggleForm'],
+  components: {
+    appButton
+  }
 }
 </script>

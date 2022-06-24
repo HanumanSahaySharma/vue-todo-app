@@ -9,7 +9,7 @@
                 </div>
                 <h2>{{ todo.title }}</h2>
             </div>
-            <button class="btn btn-danger btn-sm" @click="$emit('removeSingleTodo', index)">Remove</button>
+            <appButton title="Remove" varient="danger" size="sm" v-on:onClick="$emit('removeSingleTodo', index)"></appButton>
         </div>
     </div>
     <div class="text-center" v-else>
@@ -19,8 +19,13 @@
   </div>
 </template>
 <script>
+import appButton from '@/components/Button/index'
 export default {
+  name: 'todo-list',
   props: ['todos', 'selectedTodosLength'],
+  components: {
+    appButton
+  },
   methods: {
     selectAllTodos () {
       this.todos.filter((todo) => {

@@ -9,11 +9,10 @@
           v-on:selectAllTodos="selectAllTodos"
         />
         <div class="btn-group d-flex align-items-center justify-center-center mb-15" v-if="todos.length > 0">
-          <button class="btn btn-primary btn-sm" v-if="selectedTodos.length > 0" @click="deselectAllTodos">Deselect All Todos</button>
-          <button class="btn btn-primary btn-sm" v-if="!selectedTodos.length > 0" @click="selectAllTodos">Select All Todos</button>
-          <button :disabled="selectedTodos.length <= 0" class="btn btn-danger btn-sm" @click="removeAllSelectedTodos">Remove Selected Todos</button>
+          <appButton title="Deselect All Todos" v-if="selectedTodos.length > 0" varient="primary" size="sm" v-on:onClick="deselectAllTodos"></appButton>
+          <appButton title="Select All Todos" v-if="!selectedTodos.length > 0" varient="primary" size="sm" v-on:onClick="selectAllTodos"></appButton>
+          <appButton :disabled="disableRemoveSeletedTodosBtn" title="Remove Selected Todos" varient="danger" size="sm" v-on:onClick="removeAllSelectedTodos"></appButton>
         </div>
-
   </div>
 </template>
 
@@ -21,12 +20,14 @@
 import TodoHeader from '@/components/TodoHeader'
 import TodoForm from '@/components/TodoForm'
 import TodoList from '@/components/TodoList'
+import appButton from '@/components/Button/index'
 export default {
   name: 'App',
   components: {
     TodoHeader,
     TodoForm,
-    TodoList
+    TodoList,
+    appButton
   },
   data () {
     return {
@@ -44,6 +45,9 @@ export default {
   computed: {
     todoCount () {
       return this.todos.length
+    },
+    disableRemoveSeletedTodosBtn () {
+      return this.selectedTodos.length <= 0
     }
   },
   mounted () {
@@ -51,7 +55,7 @@ export default {
   },
   methods: {
     checkCoding () {
-      
+
     },
     toggleTodoForm () {
       this.toggleForm = !this.toggleForm
