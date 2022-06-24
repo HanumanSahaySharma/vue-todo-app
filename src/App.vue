@@ -50,13 +50,7 @@ export default {
       return this.selectedTodos.length <= 0
     }
   },
-  mounted () {
-    this.checkCoding()
-  },
   methods: {
-    checkCoding () {
-
-    },
     toggleTodoForm () {
       this.toggleForm = !this.toggleForm
     },
