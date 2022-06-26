@@ -31,15 +31,13 @@ export default {
   },
   data () {
     return {
-      title: 'Hello World!',
       todos: [
         { title: 'Go to Gym at 7 AM', selected: false },
         { title: 'Make a video for YouTube', selected: false },
         { title: 'Read the Newspaper everyday', selected: false }
       ],
       selectedTodos: [],
-      toggleForm: false,
-      isEnabled: false
+      toggleForm: false
     }
   },
   computed: {
